@@ -1,0 +1,39 @@
+name: Build Bookmarklet
+
+on:
+  push:
+    branches:
+      - main # Replace with your main branch name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' # Or your preferred Node.js version
+
+      - name: Install dependencies (if any)
+        run: npm install # Remove this line if you don't have dependencies
+
+      - name: Minify JavaScript
+        run: |
+          npm install -g terser
+          terser "/Users/hesara/dev/test/badger_availability/happy_badger_availability.js" --compress --mangle -o happy_badger_availability.min.js 
+
+      - name: Create bookmarklet
+        run: |
+          echo "javascript:(function(){" > happy_badger_availability_bookmarklet.txt
+          cat happy_badger_availability.min.js >> happy_badger_availability_bookmarklet.txt
+          echo "}());" >> happy_badger_availability_bookmarklet.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: bookmarklet
+          path: happy_badger_availability_bookmarklet.txt

@@ -21,7 +21,7 @@ jobs:
       - name: Minify JavaScript
         run: |
           npm install -g terser
-          terser "/Users/hesara/dev/test/badger_availability/happy_badger_availability.js" --compress --mangle -o happy_badger_availability.min.js 
+          terser "happy_badger_availability.js" --compress --mangle -o happy_badger_availability.min.js 
 
       - name: Create bookmarklet
         run: |

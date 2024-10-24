@@ -18,9 +18,6 @@ jobs:
         with:
           node-version: '16' # Or your preferred Node.js version
 
-      - name: Install dependencies (if any)
-        run: npm install # Remove this line if you don't have dependencies
-
       - name: Minify JavaScript
         run: |
           npm install -g terser

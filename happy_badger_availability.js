@@ -149,7 +149,7 @@ function createAndDisplayDateDropdown() {
 
 // Add this CSS to your stylesheet or within a <style> tag in your HTML
 const availabilityStyle = document.createElement('style');
-    style.innerHTML = `
+availabilityStyle.innerHTML = `
         .availability-text {
             font-size: 11px;
             color: black;

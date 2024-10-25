@@ -113,6 +113,10 @@ function displayTeamAvailability(selectedDate) {
 // Create and display a date dropdown to select the date for availability on top of the floor plan
 function createAndDisplayDateDropdown() {
     const productMediaDiv = document.querySelector('.product__media');
+    
+    // If the product media div doesn't exist, we can't add the date dropdown
+    if (!productMediaDiv) return;
+
     const dateDropdown = document.createElement('select');
     dateDropdown.classList.add('date-dropdown');
 
@@ -144,7 +148,7 @@ function createAndDisplayDateDropdown() {
 }  
 
 // Add this CSS to your stylesheet or within a <style> tag in your HTML
-const style = document.createElement('style');
+const availabilityStyle = document.createElement('style');
     style.innerHTML = `
         .availability-text {
             font-size: 11px;
@@ -160,7 +164,7 @@ const style = document.createElement('style');
     `;
 
 // load the necessary CSS
-document.head.appendChild(style);
+document.head.appendChild(availabilityStyle);
 
 // let data = window.appointlyClient.bookingDataForAllServices[window.appointlyProduct.id]
 

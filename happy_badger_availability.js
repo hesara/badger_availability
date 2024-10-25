@@ -1,5 +1,21 @@
 // Run this code on https://www.happybadger.fi/products/varaus in the debug console or e.g. as a bookmarklet to display table availability on the floor plan.
 
+// Define the positions of each table on the floor plan
+const teamMemberPositions = new Map([
+    ['Booth 1', { top: '40%', left: '13%' }],
+    ['Booth 2', { top: '59%', left: '13%' }],
+    ['Booth 3', { top: '75%', left: '13%' }],
+    ['Square 1', { top: '35%', left: '20%' }],
+    ['Square 2', { top: '38%', left: '29%' }],
+    ['Round Table', { top: '50%', left: '22%' }],
+    ['Square 3', { top: '35%', left: '60%' }],
+    ['Square 4', { top: '38%', left: '67%' }],
+    ['Mecatol Rex', { top: '53%', left: '76%' }],
+]);
+
+// Helper functions
+
+// Get "team availability" (actually information about free tables) for a specific date
 async function getTeamAvailability(dateOfInterest) {
     const client = window.appointlyClient;
     const config = window.appointlyConfig;
@@ -34,6 +50,7 @@ async function getTeamAvailability(dateOfInterest) {
     return result;
 }
 
+// Combine overlapping time slots into a single slot
 function mergeOverlappingSlots(slots) {
     if (slots.length === 0) {
       return slots;
@@ -63,19 +80,7 @@ function mergeOverlappingSlots(slots) {
     return mergedSlots;
 }
 
-// Define the positions of each table on the floor plan
-const teamMemberPositions = new Map([
-['Booth 1', { top: '40%', left: '13%' }],
-['Booth 2', { top: '59%', left: '13%' }],
-['Booth 3', { top: '75%', left: '13%' }],
-['Square 1', { top: '35%', left: '20%' }],
-['Square 2', { top: '38%', left: '29%' }],
-['Round Table', { top: '50%', left: '22%' }],
-['Square 3', { top: '35%', left: '60%' }],
-['Square 4', { top: '38%', left: '67%' }],
-['Mecatol Rex', { top: '53%', left: '76%' }],
-]);
-
+// Display the availability for a specific date on the floor plan
 function displayTeamAvailability(selectedDate) {
     const productMediaDiv = document.querySelector('.product__media');
 
@@ -105,6 +110,7 @@ function displayTeamAvailability(selectedDate) {
     });
 }
 
+// Create and display a date dropdown to select the date for availability on top of the floor plan
 function createAndDisplayDateDropdown() {
     const productMediaDiv = document.querySelector('.product__media');
     const dateDropdown = document.createElement('select');

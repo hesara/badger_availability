@@ -159,8 +159,8 @@ document.head.appendChild(style);
 // let data = window.appointlyClient.bookingDataForAllServices[window.appointlyProduct.id]
 
 // Call the new function to create and display the date dropdown
-createAndDisplayDateDropdown();
+setTimeout(createAndDisplayDateDropdown, 1000);
 
 // Initially display availability for the current date
-const currentDate = new Date().toLocaleDateString('en-GB').split('/').join('-');
-displayTeamAvailability(currentDate);
+// const currentDate = new Date().toLocaleDateString('en-GB').split('/').join('-');
+// displayTeamAvailability(currentDate);

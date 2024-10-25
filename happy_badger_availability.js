@@ -3,7 +3,7 @@
 // Define the positions of each table on the floor plan
 const teamMemberPositions = new Map([
     ['Booth 1', { top: '40%', left: '13%' }],
-    ['Booth 2', { top: '59%', left: '13%' }],
+    ['Booth 2', { top: '58%', left: '13%' }],
     ['Booth 3', { top: '75%', left: '13%' }],
     ['Square 1', { top: '35%', left: '20%' }],
     ['Square 2', { top: '38%', left: '29%' }],
@@ -154,7 +154,7 @@ function createAndDisplayDateDropdown() {
 const availabilityStyle = document.createElement('style');
 availabilityStyle.innerHTML = `
     .availability-text {
-        font-size: 11px;
+        font-size: 10px;
         color: black;
         padding: 2px 4px;
     }

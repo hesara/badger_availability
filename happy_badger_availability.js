@@ -117,6 +117,9 @@ function createAndDisplayDateDropdown() {
     // If the product media div doesn't exist, we can't add the date dropdown
     if (!productMediaDiv) return;
 
+    // Make sure the necessary data is available
+    if (!window.appointlyClient || !window.appointlyClient.service || !window.appointlyClient.service.variants) return;
+
     const dateDropdown = document.createElement('select');
     dateDropdown.classList.add('date-dropdown');
 
@@ -150,27 +153,25 @@ function createAndDisplayDateDropdown() {
 // Add this CSS to your stylesheet or within a <style> tag in your HTML
 const availabilityStyle = document.createElement('style');
 availabilityStyle.innerHTML = `
-        .availability-text {
-            font-size: 11px;
-            color: black;
-            padding: 2px 4px;
-        }
-        .date-dropdown {
-            position: absolute; /* Position within .product__media */
-            top: 10px;          /* Adjust position as needed */
-            left: 10px;
-            z-index: 10;        /* Ensure it's above other elements */
-        }
-    `;
+    .availability-text {
+        font-size: 11px;
+        color: black;
+        padding: 2px 4px;
+    }
+    .date-dropdown {
+        position: absolute; /* Position within .product__media */
+        top: 10px;          /* Adjust position as needed */
+        left: 10px;
+        z-index: 10;        /* Ensure it's above other elements */
+    }
+`;
 
 // load the necessary CSS
 document.head.appendChild(availabilityStyle);
 
-// let data = window.appointlyClient.bookingDataForAllServices[window.appointlyProduct.id]
-
-// Call the new function to create and display the date dropdown
-setTimeout(createAndDisplayDateDropdown, 1000);
+// Display the date dropdown
+setTimeout(createAndDisplayDateDropdown, 2000);
 
 // Initially display availability for the current date
-// const currentDate = new Date().toLocaleDateString('en-GB').split('/').join('-');
-// displayTeamAvailability(currentDate);
+//const currentDate = new Date().toLocaleDateString('en-GB').split('/').join('-');
+//displayTeamAvailability(currentDate);

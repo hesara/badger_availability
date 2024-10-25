@@ -13,6 +13,22 @@ const teamMemberPositions = new Map([
     ['Mecatol Rex', { top: '53%', left: '76%' }],
 ]);
 
+// Add this CSS to your stylesheet or within a <style> tag in your HTML
+const availabilityStyle = document.createElement('style');
+availabilityStyle.innerHTML = `
+    .availability-text {
+        font-size: 10px;
+        color: black;
+        padding: 2px 4px;
+    }
+    .date-dropdown {
+        position: absolute; /* Position within .product__media */
+        top: 10px;          /* Adjust position as needed */
+        left: 10px;
+        z-index: 10;        /* Ensure it's above other elements */
+    }
+`;
+
 // Helper functions
 
 // Get "team availability" (actually information about free tables) for a specific date
@@ -148,23 +164,7 @@ function createAndDisplayDateDropdown() {
 
     // Insert the date dropdown *before* the product media div
     productMediaDiv.parentNode.insertBefore(dateDropdown, productMediaDiv);
-}  
-
-// Add this CSS to your stylesheet or within a <style> tag in your HTML
-const availabilityStyle = document.createElement('style');
-availabilityStyle.innerHTML = `
-    .availability-text {
-        font-size: 10px;
-        color: black;
-        padding: 2px 4px;
-    }
-    .date-dropdown {
-        position: absolute; /* Position within .product__media */
-        top: 10px;          /* Adjust position as needed */
-        left: 10px;
-        z-index: 10;        /* Ensure it's above other elements */
-    }
-`;
+}
 
 // load the necessary CSS
 document.head.appendChild(availabilityStyle);
